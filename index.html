@@ -30,11 +30,21 @@
             text-align: center;
         }
 
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            height: 90px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
         h2 {
             color: #003366;
             font-size: 24px;
             font-weight: 700;
-            margin-top: 10px;
             margin-bottom: 5px;
         }
 
@@ -91,7 +101,6 @@
             background-color: #cc5200;
         }
 
-        /* El recuadro de resultados ahora inicia oculto (display: none) */
         .result-box {
             display: none;
             background-color: #f0f5fa;
@@ -129,7 +138,11 @@
 <body>
 
     <div class="card">
-        <h2>UNIMET - Resultados PUI Regulares</h2>
+        <div class="logo-container">
+            <img src="https://www.unimet.edu.ve/wp-content/uploads/2022/10/logo-unimet-mini.png" alt="Logo UNIMET">
+        </div>
+
+        <h2>Resultados PUI Regulares</h2>
         <div class="subtitle">Trimestre 2526-3</div>
         
         <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
@@ -138,7 +151,7 @@
             <input type="text" id="cedulaInput" placeholder="Ej. 13444751">
         </div>
         
-        <div id="errorMsg" class="error-message">Cédula no encontrada. Intenta de nuevo.</div>
+        <div id="errorMsg" class="error-message">Por favor, ingresa un número de cédula válido.</div>
         
         <button class="btn-consultar" onclick="realizarConsulta()">Consultar</button>
         
@@ -151,7 +164,6 @@
 
     <script>
         function realizarConsulta() {
-            // Obtenemos el valor que se escribió en la caja de texto
             const cedula = document.getElementById('cedulaInput').value.trim();
             const resultadoBox = document.getElementById('resultadoBox');
             const errorMsg = document.getElementById('errorMsg');
@@ -159,20 +171,28 @@
             const nombreEstudiante = document.getElementById('nombreEstudiante');
             const nivelAsignado = document.getElementById('nivelAsignado');
 
-            // Limpiamos estados anteriores
+            // Limpiamos los estados de ejecuciones anteriores
             resultadoBox.style.display = 'none';
             errorMsg.style.display = 'none';
 
-            // Verificamos si la cédula es la tuya
+            // Si el campo está vacío, pide ingresar un número
+            if (cedula === "") {
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Lógica inteligente: Si meten tu cédula, muestra tus datos reales
             if (cedula === "13444751") {
                 nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
-                resultadoBox.style.display = 'block'; // Mostramos el recuadro azul
-            } else if (cedula === "") {
-                alert("Por favor, ingresa un número de cédula.");
             } else {
-                errorMsg.style.display = 'block'; // Muestra error si ponen otra cédula
+                // Si meten cualquier otra cédula (como la 26443006), genera una simulación exitosa
+                nombreEstudiante.textContent = "Estudiante UNIMET";
+                nivelAsignado.textContent = "Inglés I";
             }
+
+            // Mostramos el bloque de respuestas de forma dinámica
+            resultadoBox.style.display = 'block';
         }
     </script>
 
