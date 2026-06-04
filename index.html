@@ -26,13 +26,19 @@
 
         .container {
             background-color: #ffffff;
-            padding: 40px 30px;
+            padding: 35px 30px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             width: 100%;
             max-width: 450px;
             text-align: center;
             box-sizing: border-box;
+        }
+
+        .logo-unimet {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 20px;
         }
 
         h1 {
@@ -132,6 +138,8 @@
 <body>
 
 <div class="container">
+    <img src="https://www.unimet.edu.ve/wp-content/uploads/2021/04/logo_unimet_web.png" alt="Logo UNIMET" class="logo-unimet">
+    
     <h1>Resultados PUI Regulares</h1>
     <div class="subtitle">Trimestre 2526-3</div>
     
@@ -147,7 +155,6 @@
 </div>
 
 <script>
-    // Base de datos COMPLETA (99 estudiantes) procesada del CSV provisto
     const estudiantes = {
         "29965143": { nombre: "Diego Tamayo", curso: "Eximido", i4: "20", i5: "20" },
         "30751422": { nombre: "Andreina Betancourt", curso: "Eximido", i4: "20", i5: "20" },
@@ -167,7 +174,7 @@
         "28472841": { nombre: "Mya Kulig", curso: "Eximido", i4: "20", i5: "20" },
         "28301202": { nombre: "Ricardo Godoy", curso: "Eximido", i4: "20", i5: "20" },
         "32348138": { nombre: "Lorenzo Recao", curso: "Eximido", i4: "20", i5: "20" },
-        "32348152": { nombre: "Federico Recao", curso: "Eximido", i4: "20", i18: "18" },
+        "32348152": { nombre: "Federico Recao", curso: "Eximido", i4: "20", i5: "18" },
         "28588624": { nombre: "Ariana Zeiden", curso: "Eximido", i4: "20", i5: "18" },
         "30496325": { nombre: "Luis Carreno", curso: "Eximido", i4: "20", i5: "18" },
         "31307622": { nombre: "Luis Ayala", curso: "Eximido", i4: "20", i5: "18" },
@@ -202,7 +209,7 @@
         "24898202": { nombre: "Milady Serrano", curso: "Inglés IV", i4: "-", i5: "-" },
         "32011572": { nombre: "Jose Candina", curso: "Inglés IV", i4: "-", i5: "-" },
         "27703524": { nombre: "Jose Guerrero", curso: "Inglés IV", i4: "-", i5: "-" },
-        "32438373": { nombre: "Savarese Nicole", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32438373": { nombre: "Nicole Savarese", curso: "Inglés IV", i4: "-", i5: "-" },
         "32161771": { nombre: "Paula Curiel", curso: "Inglés IV", i4: "-", i5: "-" },
         "32852503": { nombre: "Rafael Van Grieken", curso: "Inglés IV", i4: "-", i5: "-" },
         "32122059": { nombre: "Giuseppe Boccassini", curso: "Inglés IV", i4: "-", i5: "-" },
@@ -216,13 +223,13 @@
         "31556891": { nombre: "Marcheline Aldana", curso: "Inglés III", i4: "-", i5: "-" },
         "31230096": { nombre: "Samanta De Freitas", curso: "Inglés III", i4: "-", i5: "-" },
         "30413228": { nombre: "Mariana Douaihy", curso: "Inglés III", i4: "-", i5: "-" },
-        "19292583": { nombre: "Rodriguez Honorio", curso: "Inglés III", i4: "-", i5: "-" },
+        "19292583": { nombre: "Honorio Rodriguez", curso: "Inglés III", i4: "-", i5: "-" },
         "30424749": { nombre: "Fabiana Padron", curso: "Inglés III", i4: "-", i5: "-" },
         "30849627": { nombre: "Miguel Moreno", curso: "Inglés III", i4: "-", i5: "-" },
         "30634649": { nombre: "Rafael Liscano", curso: "Inglés III", i4: "-", i5: "-" },
-        "32051694": { nombre: "Acosta Juan", curso: "Inglés III", i4: "-", i5: "-" },
+        "32051694": { nombre: "Juan Acosta", curso: "Inglés III", i4: "-", i5: "-" },
         "30496885": { nombre: "Adrian Martinez", curso: "Inglés III", i4: "-", i5: "-" },
-        "31649258": { nombre: "Marti Juan", curso: "Inglés III", i4: "-", i5: "-" },
+        "31649258": { nombre: "Juan Marti", curso: "Inglés III", i4: "-", i5: "-" },
         "32397791": { nombre: "Sophia Bolivar", curso: "Inglés III", i4: "-", i5: "-" },
         "31317137": { nombre: "Maria Flores", curso: "Inglés III", i4: "-", i5: "-" },
         "27714291": { nombre: "Andrea Gallo", curso: "Inglés III", i4: "-", i5: "-" },
@@ -243,7 +250,7 @@
         "27714415": { nombre: "Jose Pabon", curso: "Inglés I", i4: "-", i5: "-" },
         "29502028": { nombre: "Cesar Silva", curso: "Inglés I", i4: "-", i5: "-" },
         "32423442": { nombre: "Omar El Dali", curso: "Inglés I", i4: "-", i5: "-" },
-        "30330377": { font: "Fabio Mazzeo", curso: "Inglés I", i4: "-", i5: "-" },
+        "30330377": { nombre: "Fabio Mazzeo", curso: "Inglés I", i4: "-", i5: "-" },
         "27647882": { nombre: "Diego Ascanio", curso: "Inglés I", i4: "-", i5: "-" },
         "27321985": { nombre: "Rosana De Abreu", curso: "Inglés I", i4: "-", i5: "-" },
         "13444751": { nombre: "Yadira Gomez", curso: "Inglés I", i4: "-", i5: "-" }
@@ -253,7 +260,6 @@
         const input = document.getElementById('cedulaInput').value.trim();
         const resultBox = document.getElementById('result');
         
-        // Limpia puntos, comas o cualquier espacio que metan al tipear
         const cedula = input.replace(/\./g, '').replace(/,/g, '').replace(/\s/g, '');
 
         if (cedula === "") {
@@ -269,26 +275,23 @@
             
             let detalles = `
                 <div class="result-title">Información de Asignación</div>
-                <strong>Estudiante:</strong> ${estudiante.nombre || estudiante.font}<br>
+                <strong>Estudiante:</strong> ${estudiante.nombre}<br>
                 <strong>Nivel Asignado:</strong> ${estudiante.curso}
             `;
             
             if (estudiante.curso === "Eximido") {
-                // Validación especial por si es la nota de Federico Recao (i18) o regular (i5)
-                const nota5 = estudiante.i5 || estudiante.i18;
-                detalles += `<br><strong>Nota Inglés IV:</strong> ${estudiante.i4}<br><strong>Nota Inglés V:</strong> ${nota5}`;
+                detalles += `<br><strong>Nota Inglés IV:</strong> ${estudiante.i4}<br><strong>Nota Inglés V:</strong> ${estudiante.i5}`;
             }
             
             resultBox.innerHTML = detalles;
         } else {
             resultBox.className = "result-box error";
-            resultBox.innerHTML = `<div class="result-title">No Encontrado</div>La cédula <strong>${cedula}</strong> no está registrada para este período o el formato es incorrecto.`;
+            resultBox.innerHTML = `<div class="result-title">No Encontrado</div>La cédula <strong>${cedula}</strong> no está registrada para este período.`;
         }
         
         resultBox.style.display = "block";
     }
 
-    // Ejecuta al presionar Enter
     document.getElementById("cedulaInput").addEventListener("keyup", function(event) {
         if (event.key === "Enter") {
             buscarResultado();
