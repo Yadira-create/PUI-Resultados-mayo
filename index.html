@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados PUI 2526-3 - Inglés</title>
+    <title>UNIMET - Resultados PUI</title>
     <style>
         :root {
-            --primary-color: #003366;
-            --secondary-color: #f4f4f9;
-            --text-color: #333;
-            --accent-color: #0088cc;
+            --unimet-blue: #003874;
+            --unimet-orange: #E86014;
+            --background-gray: #F4F6F9;
+            --text-dark: #333333;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background-gray);
+            color: var(--text-dark);
             margin: 0;
             padding: 0;
             display: flex;
@@ -26,111 +26,119 @@
 
         .container {
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             width: 100%;
-            max-width: 480px;
+            max-width: 450px;
             text-align: center;
             box-sizing: border-box;
         }
 
         h1 {
-            color: var(--primary-color);
+            color: var(--unimet-blue);
             font-size: 24px;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
         }
 
-        p.subtitle {
-            color: #666;
+        .subtitle {
+            color: var(--unimet-orange);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .instruction {
+            color: #666666;
             font-size: 14px;
             margin-bottom: 25px;
         }
 
         .form-group {
             margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--primary-color);
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ccc;
-            border-radius: 6px;
+            padding: 14px;
+            border: 1.5px solid #E0E0E0;
+            border-radius: 8px;
             font-size: 16px;
             box-sizing: border-box;
-            transition: border-color 0.3s;
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         input[type="text"]:focus {
-            border-color: var(--accent-color);
+            border-color: var(--unimet-orange);
+            box-shadow: 0 0 0 3px rgba(232, 96, 20, 0.15);
             outline: none;
         }
 
         button {
             width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
+            padding: 14px;
+            background-color: var(--unimet-orange);
+            color: #ffffff;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.2s, transform 0.1s;
         }
 
         button:hover {
-            background-color: #002244;
+            background-color: #CD500E;
+        }
+
+        button:active {
+            transform: scale(0.99);
         }
 
         .result-box {
             margin-top: 25px;
             padding: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             display: none;
             text-align: left;
-            font-size: 15px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         .success {
-            background-color: #e6f4ea;
-            border: 1px solid #137333;
-            color: #137333;
+            background-color: #F0F7FF;
+            border-left: 4px solid var(--unimet-blue);
+            color: #1A365D;
         }
 
         .error {
-            background-color: #fce8e6;
-            border: 1px solid #c5221f;
-            color: #c5221f;
+            background-color: #FFF5F5;
+            border-left: 4px solid #E53E3E;
+            color: #742A2A;
         }
 
         .result-title {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 4px;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: var(--unimet-blue);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Consulta de Resultados PUI</h1>
-    <p class="subtitle">Período 2526-3 - Ubicación de Inglés</p>
+    <h1>Resultados PUI Regulares</h1>
+    <div class="subtitle">Trimestre 2526-3</div>
+    
+    <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
     
     <div class="form-group">
-        <label for="cedulaInput">Número de Cédula:</label>
-        <input type="text" id="cedulaInput" placeholder="Ej: 29965143" autocomplete="off">
+        <input type="text" id="cedulaInput" placeholder="Ej: 30408011" autocomplete="off">
     </div>
     
     <button onclick="buscarResultado()">Consultar</button>
@@ -139,13 +147,13 @@
 </div>
 
 <script>
-    // Base de datos de estudiantes cargada desde el CSV provisto
+    // Base de datos de estudiantes extraída de "Resultados PUI 2526-3 mayo.xlsx"
     const estudiantes = {
         "29965143": { nombre: "Diego Tamayo", curso: "Eximido", i4: "20", i5: "20" },
         "30751422": { nombre: "Andreina Betancourt", curso: "Eximido", i4: "20", i5: "20" },
         "29625804": { nombre: "Fouad Ibrahim", curso: "Eximido", i4: "20", i5: "20" },
         "32534733": { nombre: "Mauro Liberatoscioli", curso: "Eximido", i4: "20", i5: "20" },
-        "29625499": { font: "Gabriel Figuera", curso: "Eximido", i4: "20", i5: "20" },
+        "29625499": { nombre: "Gabriel Figuera", curso: "Eximido", i4: "20", i5: "20" },
         "28180335": { nombre: "Said Lamk", curso: "Eximido", i4: "20", i5: "20" },
         "32122020": { nombre: "Massimo Favaretto", curso: "Eximido", i4: "20", i5: "20" },
         "29662157": { nombre: "Rafael Hernandez", curso: "Eximido", i4: "20", i5: "20" },
@@ -166,7 +174,7 @@
         const input = document.getElementById('cedulaInput').value.trim();
         const resultBox = document.getElementById('result');
         
-        // Limpiar puntos o espacios comunes que un estudiante pueda ingresar
+        // Limpia puntos o espacios que introduzca el estudiante
         const cedula = input.replace(/\./g, '').replace(/\s/g, '');
 
         if (cedula === "") {
@@ -181,9 +189,9 @@
             resultBox.className = "result-box success";
             
             let detalles = `
-                <div class="result-title">Resultado Encontrado</div>
-                <strong>Estudiante:</strong> ${estudiante.nombre || estudiante.font}<br>
-                <strong>Asignación:</strong> ${estudiante.curso}
+                <div class="result-title">Información de Asignación</div>
+                <strong>Estudiante:</strong> ${estudiante.nombre}<br>
+                <strong>Nivel Asignado:</strong> ${estudiante.curso}
             `;
             
             if (estudiante.curso === "Eximido") {
@@ -193,13 +201,13 @@
             resultBox.innerHTML = detalles;
         } else {
             resultBox.className = "result-box error";
-            resultBox.innerHTML = `<div class="result-title">No Encontrado</div>La cédula <strong>${cedula}</strong> no se encuentra registrada en los resultados de este período.`;
+            resultBox.innerHTML = `<div class="result-title">No Encontrado</div>La cédula <strong>${cedula}</strong> no está registrada para este período.`;
         }
         
         resultBox.style.display = "block";
     }
 
-    // Permitir presionar "Enter" para buscar
+    // Ejecuta la consulta al presionar la tecla Enter
     document.getElementById("cedulaInput").addEventListener("keyup", function(event) {
         if (event.key === "Enter") {
             buscarResultado();
