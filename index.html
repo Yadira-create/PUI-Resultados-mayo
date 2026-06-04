@@ -32,7 +32,7 @@
 
         /* Estilos para el texto UNIMET en naranja */
         .brand-title {
-            color: #e65c00; /* Naranja idéntico al botón */
+            color: #e65c00;
             font-size: 28px;
             font-weight: 800;
             letter-spacing: 2px;
@@ -145,7 +145,7 @@
         <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
         
         <div class="input-group">
-            <input type="text" id="cedulaInput" placeholder="Ej. 13444751">
+            <input type="text" id="cedulaInput" placeholder="Ej. 12345678">
         </div>
         
         <div id="errorMsg" class="error-message">Por favor, ingresa un número de cédula válido.</div>
@@ -176,8 +176,8 @@
                 return;
             }
 
-            // Si es tu cédula muestra tus datos, si es otra muestra datos de simulación
-            if (cedula === "13444751") {
+            // Cambiada la comprobación principal para usar el nuevo número
+            if (cedula === "12345678") {
                 nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
             } else {
