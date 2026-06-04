@@ -5,27 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNIMET - Resultados PUI</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f4f6f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); width: 100%; max-width: 450px; padding: 40px 30px; text-align: center; }
-        h2 { color: #003366; font-size: 24px; font-weight: 700; margin-top: 15px; margin-bottom: 5px; } /* Ajuste de margen superior */
-        .subtitle { color: #d9531e; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 25px; }
-        .instruction { color: #666666; font-size: 14px; margin-bottom: 20px; }
-        .input-group { margin-bottom: 20px; }
-        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 6px; font-size: 16px; text-align: center; color: #333333; }
-        .btn-consultar { width: 100%; background-color: #e65c00; color: white; border: none; border-radius: 6px; padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer; margin-bottom: 30px; }
-        .result-box { background-color: #f0f5fa; border-left: 4px solid #0055a5; border-radius: 4px; padding: 20px; text-align: left; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #003366;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #d9531e;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .instruction {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            color: #333333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #d9531e;
+        }
+
+        .btn-consultar {
+            width: 100%;
+            background-color: #e65c00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-bottom: 30px;
+        }
+
+        .btn-consultar:hover {
+            background-color: #cc5200;
+        }
+
+        /* El recuadro de resultados ahora inicia oculto (display: none) */
+        .result-box {
+            display: none;
+            background-color: #f0f5fa;
+            border-left: 4px solid #0055a5;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .result-box h3 {
+            color: #003366;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .result-item {
+            font-size: 14px;
+            color: #333333;
+            margin-bottom: 6px;
+        }
+
+        .result-item strong {
+            color: #111111;
+        }
+        
+        .error-message {
+            display: none;
+            color: #d9531e;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <!-- El bloque de imagen rota fue ELIMINADO -->
-        <h2>UNIMET - Resultados PUI Regulares</h2> <!-- Pequeño cambio de texto -->
+        <h2>UNIMET - Resultados PUI Regulares</h2>
         <div class="subtitle">Trimestre 2526-3</div>
+        
         <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
-        <div class="input-group"><input type="text" value="Ej: 30408011"></div>
-        <button class="btn-consultar">Consultar</button>
-        <div class="result-box"><h3>Información de Asignación</h3></div>
+        
+        <div class="input-group">
+            <input type="text" id="cedulaInput" placeholder="Ej. 13444751">
+        </div>
+        
+        <div id="errorMsg" class="error-message">Cédula no encontrada. Intenta de nuevo.</div>
+        
+        <button class="btn-consultar" onclick="realizarConsulta()">Consultar</button>
+        
+        <div id="resultadoBox" class="result-box">
+            <h3>Información de Asignación</h3>
+            <div class="result-item"><strong>Estudiante:</strong> <span id="nombreEstudiante"></span></div>
+            <div class="result-item"><strong>Nivel Asignado:</strong> <span id="nivelAsignado"></span></div>
+        </div>
     </div>
+
+    <script>
+        function realizarConsulta() {
+            // Obtenemos el valor que se escribió en la caja de texto
+            const cedula = document.getElementById('cedulaInput').value.trim();
+            const resultadoBox = document.getElementById('resultadoBox');
+            const errorMsg = document.getElementById('errorMsg');
+            
+            const nombreEstudiante = document.getElementById('nombreEstudiante');
+            const nivelAsignado = document.getElementById('nivelAsignado');
+
+            // Limpiamos estados anteriores
+            resultadoBox.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            // Verificamos si la cédula es la tuya
+            if (cedula === "13444751") {
+                nombreEstudiante.textContent = "Yadira Gomez";
+                nivelAsignado.textContent = "Inglés I";
+                resultadoBox.style.display = 'block'; // Mostramos el recuadro azul
+            } else if (cedula === "") {
+                alert("Por favor, ingresa un número de cédula.");
+            } else {
+                errorMsg.style.display = 'block'; // Muestra error si ponen otra cédula
+            }
+        }
+    </script>
+
 </body>
 </html>
