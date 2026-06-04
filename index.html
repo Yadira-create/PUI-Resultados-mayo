@@ -30,7 +30,6 @@
             text-align: center;
         }
 
-        /* Estilos para el texto UNIMET en naranja */
         .brand-title {
             color: #e65c00;
             font-size: 28px;
@@ -101,7 +100,7 @@
         }
 
         .result-box {
-            display: none; /* Inicia oculto */
+            display: none;
             background-color: #f0f5fa;
             border-left: 4px solid #0055a5;
             border-radius: 4px;
@@ -176,12 +175,13 @@
                 return;
             }
 
-            // Cambiada la comprobación principal para usar el nuevo número
-            if (cedula === "12345678") {
-                nombreEstudiante.textContent = "Yadira Gomez";
+            // Validación por número de cédula corregida
+            if (cedula === "30751422") {
+                nombreEstudiante.textContent = "Betancourt Andreina";
                 nivelAsignado.textContent = "Inglés I";
             } else {
-                nombreEstudiante.textContent = "Estudiante UNIMET";
+                // Cualquier otra cédula introducida mostrará tus datos por defecto
+                nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
             }
 
