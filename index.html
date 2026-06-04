@@ -30,15 +30,14 @@
             text-align: center;
         }
 
-        .logo-container {
-            margin-bottom: 20px;
-        }
-
-        .logo-container img {
-            height: 90px;
-            width: auto;
-            display: block;
-            margin: 0 auto;
+        /* Estilos para el texto UNIMET en naranja */
+        .brand-title {
+            color: #e65c00; /* Naranja idéntico al botón */
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         h2 {
@@ -102,7 +101,7 @@
         }
 
         .result-box {
-            display: none;
+            display: none; /* Inicia oculto */
             background-color: #f0f5fa;
             border-left: 4px solid #0055a5;
             border-radius: 4px;
@@ -138,9 +137,7 @@
 <body>
 
     <div class="card">
-        <div class="logo-container">
-            <img src="https://www.unimet.edu.ve/wp-content/uploads/2022/10/logo-unimet-mini.png" alt="Logo UNIMET">
-        </div>
+        <div class="brand-title">UNIMET</div>
 
         <h2>Resultados PUI Regulares</h2>
         <div class="subtitle">Trimestre 2526-3</div>
@@ -171,27 +168,23 @@
             const nombreEstudiante = document.getElementById('nombreEstudiante');
             const nivelAsignado = document.getElementById('nivelAsignado');
 
-            // Limpiamos los estados de ejecuciones anteriores
             resultadoBox.style.display = 'none';
             errorMsg.style.display = 'none';
 
-            // Si el campo está vacío, pide ingresar un número
             if (cedula === "") {
                 errorMsg.style.display = 'block';
                 return;
             }
 
-            // Lógica inteligente: Si meten tu cédula, muestra tus datos reales
+            // Si es tu cédula muestra tus datos, si es otra muestra datos de simulación
             if (cedula === "13444751") {
                 nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
             } else {
-                // Si meten cualquier otra cédula (como la 26443006), genera una simulación exitosa
                 nombreEstudiante.textContent = "Estudiante UNIMET";
                 nivelAsignado.textContent = "Inglés I";
             }
 
-            // Mostramos el bloque de respuestas de forma dinámica
             resultadoBox.style.display = 'block';
         }
     </script>
