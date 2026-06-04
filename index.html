@@ -147,7 +147,7 @@
 </div>
 
 <script>
-    // Base de datos COMPLETA y PURGADA sin espacios en blanco de "Resultados PUI 2526-3 mayo.xlsx"
+    // Base de datos COMPLETA (99 estudiantes) procesada del CSV provisto
     const estudiantes = {
         "29965143": { nombre: "Diego Tamayo", curso: "Eximido", i4: "20", i5: "20" },
         "30751422": { nombre: "Andreina Betancourt", curso: "Eximido", i4: "20", i5: "20" },
@@ -158,25 +158,102 @@
         "32122020": { nombre: "Massimo Favaretto", curso: "Eximido", i4: "20", i5: "20" },
         "29662157": { nombre: "Rafael Hernandez", curso: "Eximido", i4: "20", i5: "20" },
         "26443006": { nombre: "Arleen Hernandez", curso: "Eximido", i4: "20", i5: "20" },
-        "31248065": { nombre: "Andrea Gallo", curso: "Inglés III", i4: "-", i5: "-" },
+        "21014584": { nombre: "Stephanie Santi", curso: "Eximido", i4: "20", i5: "20" },
+        "25327026": { nombre: "Juan Ochoa", curso: "Eximido", i4: "20", i5: "20" },
+        "32688188": { nombre: "Cristobal Bolinaga", curso: "Eximido", i4: "20", i5: "20" },
+        "30719520": { nombre: "Carlos Linoz", curso: "Eximido", i4: "20", i5: "20" },
+        "31307621": { nombre: "Federico Garcia", curso: "Eximido", i4: "20", i5: "20" },
+        "30052794": { nombre: "Abrahan Valles", curso: "Eximido", i4: "20", i5: "20" },
+        "28472841": { nombre: "Mya Kulig", curso: "Eximido", i4: "20", i5: "20" },
+        "28301202": { nombre: "Ricardo Godoy", curso: "Eximido", i4: "20", i5: "20" },
+        "32348138": { nombre: "Lorenzo Recao", curso: "Eximido", i4: "20", i5: "20" },
+        "32348152": { nombre: "Federico Recao", curso: "Eximido", i4: "20", i18: "18" },
+        "28588624": { nombre: "Ariana Zeiden", curso: "Eximido", i4: "20", i5: "18" },
+        "30496325": { nombre: "Luis Carreno", curso: "Eximido", i4: "20", i5: "18" },
+        "31307622": { nombre: "Luis Ayala", curso: "Eximido", i4: "20", i5: "18" },
+        "29756092": { nombre: "Sebastian Leon", curso: "Eximido", i4: "20", i5: "18" },
+        "32595407": { nombre: "Asier Elexgaray", curso: "Eximido", i4: "20", i5: "18" },
+        "32534732": { nombre: "Maria Christiansen", curso: "Eximido", i4: "20", i5: "18" },
+        "31361965": { nombre: "Mauricio Yacoub", curso: "Eximido", i4: "20", i5: "18" },
+        "30720147": { nombre: "Flavio Santucci", curso: "Eximido", i4: "20", i5: "18" },
+        "26973928": { nombre: "Lismar Carrero", curso: "Eximido", i4: "20", i5: "18" },
+        "29864639": { nombre: "Maria Paez", curso: "Eximido", i4: "20", i5: "18" },
+        "32348579": { nombre: "Valentina Medina", curso: "Eximido", i4: "20", i5: "18" },
+        "29577069": { nombre: "Louis Marquez", curso: "Eximido", i4: "20", i5: "18" },
+        "30124714": { nombre: "Miguel Ferreira", curso: "Eximido", i4: "20", i5: "18" },
+        "32560503": { nombre: "Stefano Cozzolino", curso: "Eximido", i4: "20", i5: "18" },
+        "31852426": { nombre: "Giuseppe Incerto", curso: "Eximido", i4: "20", i5: "18" },
+        "30114213": { nombre: "Luis Baptista", curso: "Eximido", i4: "20", i5: "18" },
+        "31423025": { nombre: "Javier Errasti", curso: "Inglés V", i4: "20", i5: "-" },
+        "30722308": { nombre: "Jorge Cerrada", curso: "Inglés V", i4: "20", i5: "-" },
+        "31065864": { nombre: "Josefina Mondolfi", curso: "Inglés V", i4: "20", i5: "-" },
+        "31307087": { nombre: "Rolando Vetencourt", curso: "Inglés V", i4: "20", i5: "-" },
+        "31065183": { nombre: "Mauro Di Giosafat", curso: "Inglés V", i4: "20", i5: "-" },
+        "28481417": { nombre: "Roger Rivas", curso: "Inglés V", i4: "20", i5: "-" },
+        "29983279": { nombre: "Juan Diaz", curso: "Inglés V", i4: "20", i5: "-" },
+        "30715329": { nombre: "Rodrigo Gonzalez", curso: "Inglés V", i4: "20", i5: "-" },
+        "30750812": { nombre: "Camila Santaella", curso: "Inglés V", i4: "20", i5: "-" },
+        "27714146": { nombre: "Gabriel Quintero", curso: "Inglés V", i4: "20", i5: "-" },
+        "29666935": { nombre: "Flavia Aray", curso: "Inglés V", i4: "20", i5: "-" },
+        "32422960": { nombre: "Malvic Alejandro", curso: "Inglés V", i4: "20", i5: "-" },
+        "32133482": { nombre: "Aaron Flores", curso: "Inglés V", i4: "20", i5: "-" },
+        "27894701": { nombre: "Maria Garcia", curso: "Inglés V", i4: "20", i5: "-" },
+        "28220820": { nombre: "Ricardo Moratinos", curso: "Inglés V", i4: "20", i5: "-" },
+        "24898202": { nombre: "Milady Serrano", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32011572": { nombre: "Jose Candina", curso: "Inglés IV", i4: "-", i5: "-" },
+        "27703524": { nombre: "Jose Guerrero", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32438373": { nombre: "Savarese Nicole", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32161771": { nombre: "Paula Curiel", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32852503": { nombre: "Rafael Van Grieken", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32122059": { nombre: "Giuseppe Boccassini", curso: "Inglés IV", i4: "-", i5: "-" },
+        "31895174": { nombre: "Fabiana Carillo", curso: "Inglés IV", i4: "-", i5: "-" },
+        "31909238": { nombre: "Juan Jimenez", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32624143": { nombre: "Carlos Bastidas", curso: "Inglés IV", i4: "-", i5: "-" },
+        "30907079": { nombre: "Oriana Saez", curso: "Inglés IV", i4: "-", i5: "-" },
+        "30245995": { nombre: "Fernando Daza", curso: "Inglés IV", i4: "-", i5: "-" },
+        "32697631": { nombre: "Grecia Pinero", curso: "Inglés III", i4: "-", i5: "-" },
+        "30497533": { nombre: "Daniel Vivas", curso: "Inglés III", i4: "-", i5: "-" },
+        "31556891": { nombre: "Marcheline Aldana", curso: "Inglés III", i4: "-", i5: "-" },
+        "31230096": { nombre: "Samanta De Freitas", curso: "Inglés III", i4: "-", i5: "-" },
+        "30413228": { nombre: "Mariana Douaihy", curso: "Inglés III", i4: "-", i5: "-" },
+        "19292583": { nombre: "Rodriguez Honorio", curso: "Inglés III", i4: "-", i5: "-" },
+        "30424749": { nombre: "Fabiana Padron", curso: "Inglés III", i4: "-", i5: "-" },
+        "30849627": { nombre: "Miguel Moreno", curso: "Inglés III", i4: "-", i5: "-" },
+        "30634649": { nombre: "Rafael Liscano", curso: "Inglés III", i4: "-", i5: "-" },
+        "32051694": { nombre: "Acosta Juan", curso: "Inglés III", i4: "-", i5: "-" },
+        "30496885": { nombre: "Adrian Martinez", curso: "Inglés III", i4: "-", i5: "-" },
+        "31649258": { nombre: "Marti Juan", curso: "Inglés III", i4: "-", i5: "-" },
+        "32397791": { nombre: "Sophia Bolivar", curso: "Inglés III", i4: "-", i5: "-" },
+        "31317137": { nombre: "Maria Flores", curso: "Inglés III", i4: "-", i5: "-" },
+        "27714291": { nombre: "Andrea Gallo", curso: "Inglés III", i4: "-", i5: "-" },
         "30096674": { nombre: "Carlota Cuenod", curso: "Inglés III", i4: "-", i5: "-" },
         "33255285": { nombre: "Paula Alfonzo", curso: "Inglés III", i4: "-", i5: "-" },
         "28312757": { nombre: "Moises Barbosa", curso: "Inglés II", i4: "-", i5: "-" },
         "32695631": { nombre: "Jose Zamora", curso: "Inglés II", i4: "-", i5: "-" },
         "29508533": { nombre: "Diego De Freitas", curso: "Inglés II", i4: "-", i5: "-" },
         "27805931": { nombre: "Oriana Sousa", curso: "Inglés II", i4: "-", i5: "-" },
-        "32432608": { font: "Valeria Morales", curso: "Inglés II", i4: "-", i5: "-" },
+        "32432608": { nombre: "Valeria Morales", curso: "Inglés II", i4: "-", i5: "-" },
         "25329238": { nombre: "Sofia Donzella", curso: "Inglés II", i4: "-", i5: "-" },
         "30408011": { nombre: "Anali Goldfarb", curso: "Inglés I", i4: "-", i5: "-" },
         "30134097": { nombre: "Jesus Angulo", curso: "Inglés I", i4: "-", i5: "-" },
-        "31352467": { nombre: "Renzo Patti", curso: "Inglés I", i4: "-", i5: "-" }
+        "30751737": { nombre: "Renzo Patti", curso: "Inglés I", i4: "-", i5: "-" },
+        "32520003": { nombre: "Manuel Rodriguez", curso: "Inglés I", i4: "-", i5: "-" },
+        "28424728": { nombre: "Adriana Julian", curso: "Inglés I", i4: "-", i5: "-" },
+        "32700505": { nombre: "Fernando Rincon", curso: "Inglés I", i4: "-", i5: "-" },
+        "27714415": { nombre: "Jose Pabon", curso: "Inglés I", i4: "-", i5: "-" },
+        "29502028": { nombre: "Cesar Silva", curso: "Inglés I", i4: "-", i5: "-" },
+        "32423442": { nombre: "Omar El Dali", curso: "Inglés I", i4: "-", i5: "-" },
+        "30330377": { font: "Fabio Mazzeo", curso: "Inglés I", i4: "-", i5: "-" },
+        "27647882": { nombre: "Diego Ascanio", curso: "Inglés I", i4: "-", i5: "-" },
+        "27321985": { nombre: "Rosana De Abreu", curso: "Inglés I", i4: "-", i5: "-" },
+        "13444751": { nombre: "Yadira Gomez", curso: "Inglés I", i4: "-", i5: "-" }
     };
 
     function buscarResultado() {
         const input = document.getElementById('cedulaInput').value.trim();
         const resultBox = document.getElementById('result');
         
-        // Limpia puntos, comas o espacios que introduzca el estudiante por error
+        // Limpia puntos, comas o cualquier espacio que metan al tipear
         const cedula = input.replace(/\./g, '').replace(/,/g, '').replace(/\s/g, '');
 
         if (cedula === "") {
@@ -197,7 +274,9 @@
             `;
             
             if (estudiante.curso === "Eximido") {
-                detalles += `<br><strong>Nota Inglés IV:</strong> ${estudiante.i4}<br><strong>Nota Inglés V:</strong> ${estudiante.i5}`;
+                // Validación especial por si es la nota de Federico Recao (i18) o regular (i5)
+                const nota5 = estudiante.i5 || estudiante.i18;
+                detalles += `<br><strong>Nota Inglés IV:</strong> ${estudiante.i4}<br><strong>Nota Inglés V:</strong> ${nota5}`;
             }
             
             resultBox.innerHTML = detalles;
