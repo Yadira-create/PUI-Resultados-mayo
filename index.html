@@ -160,7 +160,8 @@
 
     <script>
         function realizarConsulta() {
-            const cedula = document.getElementById('cedulaInput').value.trim();
+            // El .replace elimina cualquier punto, letra o espacio que el usuario ponga por error
+            const cedula = document.getElementById('cedulaInput').value.trim().replace(/\D/g, '');
             const resultadoBox = document.getElementById('resultadoBox');
             const errorMsg = document.getElementById('errorMsg');
             
@@ -175,12 +176,11 @@
                 return;
             }
 
-            // Validación por número de cédula corregida
+            // Condición estricta para evaluar el número limpiado
             if (cedula === "30751422") {
                 nombreEstudiante.textContent = "Betancourt Andreina";
                 nivelAsignado.textContent = "Inglés I";
             } else {
-                // Cualquier otra cédula introducida mostrará tus datos por defecto
                 nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
             }
