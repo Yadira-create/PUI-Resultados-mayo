@@ -30,12 +30,13 @@
             text-align: center;
         }
 
+        /* Estilo idéntico a edited-image.png para el texto UNIMET */
         .brand-title {
             color: #e65c00;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
 
@@ -92,7 +93,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .btn-consultar:hover {
@@ -106,6 +107,7 @@
             border-radius: 4px;
             padding: 20px;
             text-align: left;
+            margin-top: 15px;
         }
 
         .result-box h3 {
@@ -128,7 +130,6 @@
             display: none;
             color: #d9531e;
             font-size: 14px;
-            margin-top: -15px;
             margin-bottom: 15px;
         }
     </style>
@@ -136,6 +137,7 @@
 <body>
 
     <div class="card">
+        <!-- Título de texto UNIMET igual al de tu diseño -->
         <div class="brand-title">UNIMET</div>
 
         <h2>Resultados PUI Regulares</h2>
@@ -144,7 +146,7 @@
         <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
         
         <div class="input-group">
-            <input type="text" id="cedulaInput" placeholder="Ej. 12345678">
+            <input type="text" id="cedulaInput" placeholder="Ej: 30408011">
         </div>
         
         <div id="errorMsg" class="error-message">Por favor, ingresa un número de cédula válido.</div>
@@ -159,8 +161,13 @@
     </div>
 
     <script>
+        // Base de datos de estudiantes
+        const estudiantes = {
+            "30751422": { nombre: "Betancourt Andreina", nivel: "Inglés I" }
+        };
+
         function realizarConsulta() {
-            // El .replace elimina cualquier punto, letra o espacio que el usuario ponga por error
+            // Limpia puntos o espacios imprevistos
             const cedula = document.getElementById('cedulaInput').value.trim().replace(/\D/g, '');
             const resultadoBox = document.getElementById('resultadoBox');
             const errorMsg = document.getElementById('errorMsg');
@@ -172,15 +179,17 @@
             errorMsg.style.display = 'none';
 
             if (cedula === "") {
+                errorMsg.textContent = "Por favor, ingresa un número de cédula válido.";
                 errorMsg.style.display = 'block';
                 return;
             }
 
-            // Condición estricta para evaluar el número limpiado
-            if (cedula === "30751422") {
-                nombreEstudiante.textContent = "Betancourt Andreina";
-                nivelAsignado.textContent = "Inglés I";
+            // Si la cédula existe en la base de datos, muestra sus datos específicos
+            if (estudiantes[cedula]) {
+                nombreEstudiante.textContent = estudiantes[cedula].nombre;
+                nivelAsignado.textContent = estudiantes[cedula].nivel;
             } else {
+                // Para cualquier otra cédula ingresada, por defecto saldrán tus datos
                 nombreEstudiante.textContent = "Yadira Gomez";
                 nivelAsignado.textContent = "Inglés I";
             }
@@ -191,4 +200,3 @@
 
 </body>
 </html>
-pui
