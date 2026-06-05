@@ -160,7 +160,7 @@
     </div>
 
     <script>
-        // BASE DE DATOS COMPLETA EXTRAÍDA DEL EXCEL
+        // BASE DE DATOS COMPLETA DE LOS 98 ESTUDIANTES DEL EXCEL
         const baseDeDatos = {
             "29965143": { nombre: "Tamayo Diego", nivel: "Eximido" },
             "30751422": { nombre: "Betancourt Andreina", nivel: "Eximido" },
@@ -171,17 +171,95 @@
             "32122020": { nombre: "Favaretto Massimo", nivel: "Eximido" },
             "29662157": { nombre: "Hernandez Rafael", nivel: "Eximido" },
             "26443006": { nombre: "Hernandez Arleen", nivel: "Eximido" },
+            "21014584": { nombre: "Santi Stephanie", nivel: "Eximido" },
+            "25327026": { nombre: "Ochoa Juan", nivel: "Eximido" },
+            "32688188": { nombre: "Bolinaga Cristobal", nivel: "Eximido" },
+            "30719520": { nombre: "Linoz Carlos", nivel: "Eximido" },
+            "31307621": { nombre: "Garcia Federico", nivel: "Eximido" },
+            "30052794": { nombre: "Valles Abrahan", nivel: "Eximido" },
+            "28472841": { nombre: "Kulig Mya", nivel: "Eximido" },
+            "28301202": { nombre: "Godoy Ricardo", nivel: "Eximido" },
+            "32348138": { nombre: "Recao Lorenzo", nivel: "Eximido" },
+            "32348152": { nombre: "Recao Federico", nivel: "Eximido" },
+            "28588624": { nombre: "Zeiden Ariana", nivel: "Eximido" },
+            "30496325": { nombre: "Carreno Luis", nivel: "Eximido" },
+            "31307622": { nombre: "Ayala Luis", nivel: "Eximido" },
+            "29756092": { nombre: "Leon Sebastian", nivel: "Eximido" },
+            "32595407": { nombre: "Elexgaray Asier", nivel: "Eximido" },
+            "32534732": { nombre: "Christiansen Maria", nivel: "Eximido" },
+            "31361965": { nombre: "Yacoub Mauricio", nivel: "Eximido" },
+            "30720147": { nombre: "Santucci Flavio", nivel: "Eximido" },
+            "26973928": { nombre: "Carrero Lismar", nivel: "Eximido" },
+            "29864639": { nombre: "Paez Maria", nivel: "Eximido" },
+            "32348579": { nombre: "Medina Valentina", nivel: "Eximido" },
+            "29577069": { nombre: "Marquez Louis", nivel: "Eximido" },
+            "30124714": { nombre: "Ferreira Miguel", nivel: "Eximido" },
+            "32560503": { nombre: "Cozzolino Stefano", nivel: "Eximido" },
+            "31852426": { nombre: "Incerto Giuseppe", nivel: "Eximido" },
+            "30114213": { nombre: "Baptista Luis", nivel: "Eximido" },
+            "31423025": { nombre: "Errasti Javier", nivel: "Inglés V" },
+            "30722308": { nombre: "Cerrada Jorge", nivel: "Inglés V" },
+            "31065864": { nombre: "Mondolfi Josefina", nivel: "Inglés V" },
+            "31307087": { nombre: "Vetencourt Rolando", nivel: "Inglés V" },
+            "31065183": { nombre: "Di Giosafat Mauro", nivel: "Inglés V" },
+            "28481417": { nombre: "Rivas Roger", nivel: "Inglés V" },
+            "29983279": { nombre: "Diaz Juan", nivel: "Inglés V" },
+            "30715329": { nombre: "Gonzalez Rodrigo", nivel: "Inglés V" },
+            "30750812": { nombre: "Santaella Camila", nivel: "Inglés V" },
+            "27714146": { nombre: "Quintero Gabriel", nivel: "Inglés V" },
+            "29666935": { nombre: "Aray Flavia", nivel: "Inglés V" },
+            "32422960": { nombre: "Alejandro Malvic", nivel: "Inglés V" },
+            "32133482": { nombre: "Flores Aaron", nivel: "Inglés V" },
+            "27894701": { nombre: "Garcia Maria", nivel: "Inglés V" },
+            "28220820": { nombre: "Moratinos Ricardo", nivel: "Inglés V" },
+            "24898202": { nombre: "Serrano Milady", nivel: "Inglés IV" },
+            "32011572": { nombre: "Candina Jose", nivel: "Inglés IV" },
+            "27703524": { nombre: "Guerrero Jose", nivel: "Inglés IV" },
+            "32438373": { nombre: "Nicole Savarese", nivel: "Inglés IV" },
+            "32161771": { nombre: "Curiel Paula", nivel: "Inglés IV" },
+            "32852503": { nombre: "Van Grieken Rafael", nivel: "Inglés IV" },
+            "32122059": { nombre: "Boccassini Giuseppe", nivel: "Inglés IV" },
+            "31895174": { nombre: "Carillo Fabiana", nivel: "Inglés IV" },
+            "31909238": { nombre: "Jimenez Juan", nivel: "Inglés IV" },
+            "32624143": { nombre: "Bastidas Carlos", nivel: "Inglés IV" },
+            "30907079": { nombre: "Saez Oriana", nivel: "Inglés IV" },
+            "30245995": { nombre: "Daza Fernando", nivel: "Inglés IV" },
+            "32697631": { nombre: "Pinero Grecia", nivel: "Inglés III" },
+            "30497533": { nombre: "Vivas Daniel", nivel: "Inglés III" },
+            "31556891": { nombre: "Aldana Marcheline", nivel: "Inglés III" },
+            "31230096": { nombre: "De Freitas Samanta", nivel: "Inglés III" },
+            "30413228": { nombre: "Douaihy Mariana", nivel: "Inglés III" },
+            "19292583": { nombre: "Honorio Rodriguez", nivel: "Inglés III" },
+            "30424749": { nombre: "Padron Fabiana", nivel: "Inglés III" },
+            "30849627": { nombre: "Moreno Miguel", nivel: "Inglés III" },
+            "30634649": { nombre: "Liscano Rafael", nivel: "Inglés III" },
+            "32051694": { nombre: "Juan Acosta", nivel: "Inglés III" },
+            "30496885": { nombre: "Martinez Adrian", nivel: "Inglés III" },
+            "31649258": { nombre: "Juan Marti", nivel: "Inglés III" },
+            "32397791": { nombre: "Bolivar Sophia", nivel: "Inglés III" },
+            "31317137": { nombre: "Flores Maria", nivel: "Inglés III" },
+            "27714291": { nombre: "Gallo Andrea", nivel: "Inglés III" },
             "30096674": { nombre: "Cuenod Carlota", nivel: "Inglés III" },
-            "33255285": { nombre: "Alfonzo Paula", nivel: "Inglés III" },
+            "33255285": { nombre: "Paula", nivel: "Inglés III" },
             "28312757": { nombre: "Barbosa Moises", nivel: "Inglés II" },
             "32695631": { nombre: "Zamora Jose", nivel: "Inglés II" },
-            "29508533": { nombre: "De Freitas Diego", nivel: "Inglés II" },
+            "29508533": { nombre: "Diego De Freitas", nivel: "Inglés II" },
             "27805931": { nombre: "Sousa Oriana", nivel: "Inglés II" },
             "32432608": { nombre: "Morales Valeria", nivel: "Inglés II" },
             "25329238": { nombre: "Donzella Sofia", nivel: "Inglés II" },
-            "30408011": { font: true, nombre: "Anali Goldfarb", nivel: "Inglés I" },
+            "30408011": { nombre: "Anali Goldfarb", nivel: "Inglés I" },
             "30134097": { nombre: "Angulo Jesus", nivel: "Inglés I" },
-            "13444751": { nombre: "Yadira Gomez", nivel: "Inglés I" } // Incluida tu cédula también por seguridad
+            "30751737": { nombre: "Patti Renzo", nivel: "Inglés I" },
+            "32520003": { nombre: "Rodriguez Manuel", nivel: "Inglés I" },
+            "28424728": { nombre: "Julian Adriana", nivel: "Inglés I" },
+            "32700505": { nombre: "Rincon Fernando", nivel: "Inglés I" },
+            "27714415": { nombre: "Pabon Jose", nivel: "Inglés I" },
+            "29502028": { nombre: "Silva Cesar", nivel: "Inglés I" },
+            "32423442": { nombre: "El Dali Omar", nivel: "Inglés I" },
+            "30330377": { nombre: "Mazzeo Fabio", nivel: "Inglés I" },
+            "27647882": { nombre: "Ascanio Diego", nivel: "Inglés I" },
+            "27321985": { nombre: "De Abreu Rosana", nivel: "Inglés I" },
+            "13444751": { nombre: "Gomez Yadira", nivel: "Inglés I" }
         };
 
         function realizarConsulta() {
@@ -203,13 +281,11 @@
                 return;
             }
 
-            // Validación en el listado cargado
             if (baseDeDatos[cedula]) {
                 nombreEstudiante.textContent = baseDeDatos[cedula].nombre;
                 nivelAsignado.textContent = baseDeDatos[cedula].nivel;
                 resultadoBox.style.display = 'block';
             } else {
-                // Si la cédula no pertenece a la lista, se activa el error oficial
                 errorMsg.textContent = "Cédula no encontrada. Intenta de nuevo.";
                 errorMsg.style.display = 'block';
             }
