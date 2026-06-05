@@ -30,12 +30,13 @@
             text-align: center;
         }
 
-        .brand-title {
+        /* Encabezado tipográfico limpio y seguro que reemplaza al logo */
+        .brand-header {
             color: #e65c00;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
 
@@ -137,12 +138,12 @@
 <body>
 
     <div class="card">
-        <div class="brand-title">UNIMET</div>
+        <div class="brand-header">UNIMET</div>
 
         <h2>Resultados PUI Regulares</h2>
         <div class="subtitle">Trimestre 2526-3</div>
         
-        <p class="instruction">Ingresa tu número de cédula para consultar tu nivel asignado.</p>
+        <p class="instruction">Ingresa tu número de cédula para conocer tu nivel asignado.</p>
         
         <div class="input-group">
             <input type="text" id="cedulaInput" placeholder="Ej: 30408011">
@@ -160,7 +161,6 @@
     </div>
 
     <script>
-        // BASE DE DATOS COMPLETA DE LOS 98 ESTUDIANTES DEL EXCEL
         const baseDeDatos = {
             "29965143": { nombre: "Tamayo Diego", nivel: "Eximido" },
             "30751422": { nombre: "Betancourt Andreina", nivel: "Eximido" },
@@ -202,7 +202,7 @@
             "31065864": { nombre: "Mondolfi Josefina", nivel: "Inglés V" },
             "31307087": { nombre: "Vetencourt Rolando", nivel: "Inglés V" },
             "31065183": { nombre: "Di Giosafat Mauro", nivel: "Inglés V" },
-            "28481417": { nombre: "Rivas Roger", nivel: "Inglés V" },
+            "28481417": { font: true, nombre: "Rivas Roger", nivel: "Inglés V" },
             "29983279": { nombre: "Diaz Juan", nivel: "Inglés V" },
             "30715329": { nombre: "Gonzalez Rodrigo", nivel: "Inglés V" },
             "30750812": { nombre: "Santaella Camila", nivel: "Inglés V" },
