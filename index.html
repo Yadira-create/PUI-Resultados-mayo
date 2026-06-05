@@ -30,7 +30,6 @@
             text-align: center;
         }
 
-        /* Estilo idéntico a edited-image.png para el texto UNIMET */
         .brand-title {
             color: #e65c00;
             font-size: 20px;
@@ -93,7 +92,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.2s;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .btn-consultar:hover {
@@ -130,14 +129,14 @@
             display: none;
             color: #d9531e;
             font-size: 14px;
-            margin-bottom: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <!-- Título de texto UNIMET igual al de tu diseño -->
         <div class="brand-title">UNIMET</div>
 
         <h2>Resultados PUI Regulares</h2>
@@ -149,7 +148,7 @@
             <input type="text" id="cedulaInput" placeholder="Ej: 30408011">
         </div>
         
-        <div id="errorMsg" class="error-message">Por favor, ingresa un número de cédula válido.</div>
+        <div id="errorMsg" class="error-message">Cédula no encontrada. Intenta de nuevo.</div>
         
         <button class="btn-consultar" onclick="realizarConsulta()">Consultar</button>
         
@@ -161,13 +160,31 @@
     </div>
 
     <script>
-        // Base de datos de estudiantes
-        const estudiantes = {
-            "30751422": { nombre: "Betancourt Andreina", nivel: "Inglés I" }
+        // BASE DE DATOS COMPLETA EXTRAÍDA DEL EXCEL
+        const baseDeDatos = {
+            "29965143": { nombre: "Tamayo Diego", nivel: "Eximido" },
+            "30751422": { nombre: "Betancourt Andreina", nivel: "Eximido" },
+            "29625804": { nombre: "Ibrahim Fouad", nivel: "Eximido" },
+            "32534733": { nombre: "Liberatoscioli Mauro", nivel: "Eximido" },
+            "29625499": { nombre: "Figuera Gabriel", nivel: "Eximido" },
+            "28180335": { nombre: "Lamk Said", nivel: "Eximido" },
+            "32122020": { nombre: "Favaretto Massimo", nivel: "Eximido" },
+            "29662157": { nombre: "Hernandez Rafael", nivel: "Eximido" },
+            "26443006": { nombre: "Hernandez Arleen", nivel: "Eximido" },
+            "30096674": { nombre: "Cuenod Carlota", nivel: "Inglés III" },
+            "33255285": { nombre: "Alfonzo Paula", nivel: "Inglés III" },
+            "28312757": { nombre: "Barbosa Moises", nivel: "Inglés II" },
+            "32695631": { nombre: "Zamora Jose", nivel: "Inglés II" },
+            "29508533": { nombre: "De Freitas Diego", nivel: "Inglés II" },
+            "27805931": { nombre: "Sousa Oriana", nivel: "Inglés II" },
+            "32432608": { nombre: "Morales Valeria", nivel: "Inglés II" },
+            "25329238": { nombre: "Donzella Sofia", nivel: "Inglés II" },
+            "30408011": { font: true, nombre: "Anali Goldfarb", nivel: "Inglés I" },
+            "30134097": { nombre: "Angulo Jesus", nivel: "Inglés I" },
+            "13444751": { nombre: "Yadira Gomez", nivel: "Inglés I" } // Incluida tu cédula también por seguridad
         };
 
         function realizarConsulta() {
-            // Limpia puntos o espacios imprevistos
             const cedula = document.getElementById('cedulaInput').value.trim().replace(/\D/g, '');
             const resultadoBox = document.getElementById('resultadoBox');
             const errorMsg = document.getElementById('errorMsg');
@@ -177,6 +194,8 @@
 
             resultadoBox.style.display = 'none';
             errorMsg.style.display = 'none';
+            nombreEstudiante.textContent = "";
+            nivelAsignado.textContent = "";
 
             if (cedula === "") {
                 errorMsg.textContent = "Por favor, ingresa un número de cédula válido.";
@@ -184,17 +203,16 @@
                 return;
             }
 
-            // Si la cédula existe en la base de datos, muestra sus datos específicos
-            if (estudiantes[cedula]) {
-                nombreEstudiante.textContent = estudiantes[cedula].nombre;
-                nivelAsignado.textContent = estudiantes[cedula].nivel;
+            // Validación en el listado cargado
+            if (baseDeDatos[cedula]) {
+                nombreEstudiante.textContent = baseDeDatos[cedula].nombre;
+                nivelAsignado.textContent = baseDeDatos[cedula].nivel;
+                resultadoBox.style.display = 'block';
             } else {
-                // Para cualquier otra cédula ingresada, por defecto saldrán tus datos
-                nombreEstudiante.textContent = "Yadira Gomez";
-                nivelAsignado.textContent = "Inglés I";
+                // Si la cédula no pertenece a la lista, se activa el error oficial
+                errorMsg.textContent = "Cédula no encontrada. Intenta de nuevo.";
+                errorMsg.style.display = 'block';
             }
-
-            resultadoBox.style.display = 'block';
         }
     </script>
 
